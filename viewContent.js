@@ -84,22 +84,6 @@ class ViewContent extends HTMLElement {
                     break;
             };
         };
-        //switch (prop) {
-//
-        //    case 'ticker':
-        //        this.shadowRoot.querySelector('.ticker').innerText = newValue;
-        //        break;
-//
-        //    case 'view':
-//
-        //        this.shadowRoot.querySelector('.view').innerText = newValue;
-//
-        //        switch (newValue) {
-//
-        //            case 'Overview':
-        //                break;
-        //        };
-        //};
 
         const ticker = this.getAttribute('ticker');
         
