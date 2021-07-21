@@ -11,24 +11,53 @@ viewContent.innerHTML = `
             list-style: none;
         }
 
+        .header {
+            display: flex;
+            flex-direction: row;
+            margin: 16px;
+        }
+
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            margin: 0 16px;
+        }
+
         .view {
+            margin: 16px;
+        }
+
+        .description {
             margin: 16px;
         }
 
     </style>
 
     <h2 class="view">Welcome</h2>
-    <figure>
-        <img class="logo" alt="">
-    </figure>
-    <h3 class="company-name"></h3>
+    <div>
+        <div class="header">
+
+            <figure>
+                <img class="logo" alt="">
+            </figure>
+
+            
+            <div class="header-info">
+            
+                <h3 class="company-name"></h3>
+                <span class="ticker"></span>
+                <span class="exchange"></span>
+                <span class="industry"></span>
+                <span class="ceo"></span>
+                <a class="website" href="#" target="_blank"></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <p class="description"></p>
-    <p class="ticker"></p>
-    <p class="exchange"></p>
-    <p class="industry"></p>
-    <a class="website" href="#" target="_blank"></a>
-    <p class="ceo"></p>
-    <p class="sector"></p>
 `;
 
 class ViewContent extends HTMLElement {
@@ -43,23 +72,34 @@ class ViewContent extends HTMLElement {
     };
 
     attributeChangedCallback(prop, oldValue, newValue) {
-        switch (prop) {
+        if (prop === 'ticker') {
+            this.shadowRoot.querySelector('.ticker').innerText = newValue;
+        }
+        if (prop === 'view') {
+            this,this.shadowRoot.querySelector('.view').innerText = newValue;
 
-            case 'ticker':
+            switch (newValue) {
 
-                this.shadowRoot.querySelector('.ticker').innerText = newValue;
-                break;
-
-            case 'view':
-
-                this.shadowRoot.querySelector('.view').innerText = newValue;
-
-                switch (newValue) {
-
-                    case 'Overview':
-                        break;
-                };
+                case 'Overview':
+                    break;
+            };
         };
+        //switch (prop) {
+//
+        //    case 'ticker':
+        //        this.shadowRoot.querySelector('.ticker').innerText = newValue;
+        //        break;
+//
+        //    case 'view':
+//
+        //        this.shadowRoot.querySelector('.view').innerText = newValue;
+//
+        //        switch (newValue) {
+//
+        //            case 'Overview':
+        //                break;
+        //        };
+        //};
 
         const ticker = this.getAttribute('ticker');
         
@@ -83,8 +123,7 @@ class ViewContent extends HTMLElement {
                 this.shadowRoot.querySelector('.industry').innerText = companyInfo.industry;
                 this.shadowRoot.querySelector('.website').innerText = companyInfo.website;
                 this.shadowRoot.querySelector('.website').setAttribute('href', companyInfo.website);
-                this.shadowRoot.querySelector('.ceo').innerText = companyInfo.CEO;
-                this.shadowRoot.querySelector('.sector').innerText = companyInfo.sector;
+                this.shadowRoot.querySelector('.ceo').innerText = `CEO: ${companyInfo.CEO}`;
             });
         };
     };
