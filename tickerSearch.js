@@ -5,10 +5,14 @@ tickerSearch.innerHTML = `
             display: flex;
             flex-direction: column;
         }
+
+        .ticker-input {
+            text-transform: uppercase;
+        }
     </style>
     <form class="ticker-search" name="ticker-search" action="javascript:void(0);">
         <label for="ticker-search">Ticker:</label>
-        <input class="ticker-input" type="text" placeholder="Search..." name="ticker">
+        <input class="ticker-input" type="text" placeholder="AAPL, AMZN, BABA..." name="ticker">
         <input class="search-button" type="submit" value="Search"/>
     </form>
 `;
