@@ -28,7 +28,7 @@ viewContent.innerHTML = `
         }
 
         .description {
-            margin: 16px;
+            margin: 16px 32px;
         }
 
     </style>
@@ -45,8 +45,7 @@ viewContent.innerHTML = `
             <div class="header-info">
             
                 <h3 class="company-name"></h3>
-                <span class="ticker"></span>
-                <span class="exchange"></span>
+                <span class="ticker"></span><span class="exchange"></span>
                 <span class="industry"></span>
                 <span class="ceo"></span>
                 <a class="website" href="#" target="_blank"></a>
@@ -72,15 +71,15 @@ class ViewContent extends HTMLElement {
     };
 
     attributeChangedCallback(prop, oldValue, newValue) {
-        if (prop === 'ticker') {
-            this.shadowRoot.querySelector('.ticker').innerText = newValue;
-        }
         if (prop === 'view') {
-            this,this.shadowRoot.querySelector('.view').innerText = newValue;
+
+            this.shadowRoot.querySelector('.view').innerText = newValue;
 
             switch (newValue) {
 
                 case 'Overview':
+                    break;
+                case 'Fundamentals':
                     break;
             };
         };
