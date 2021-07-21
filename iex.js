@@ -15,7 +15,7 @@ class IEXStock {
                     return data;
                 });
             } else {
-                console.error('Error');
+                console.error(Error);
             };
         });
     };
@@ -28,7 +28,7 @@ class IEXStock {
                     return data;
                 });
             } else {
-                console.error('Error');
+                console.error(Error);
             };
         });
     };
