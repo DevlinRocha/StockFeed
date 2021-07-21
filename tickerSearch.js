@@ -26,7 +26,7 @@ class TickerSearch extends HTMLElement {
 
     searchTicker() {
         const oldTicker = this.getAttribute('ticker');
-        const newTicker = this.shadowRoot.querySelector('.ticker-input').value;
+        const newTicker = this.shadowRoot.querySelector('.ticker-input').value.toUpperCase();
 
         if (newTicker && newTicker !== oldTicker) {
             this.setAttribute('ticker', newTicker);
