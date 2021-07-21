@@ -9,23 +9,16 @@ const viewContentComp = document.querySelector('view-content');
 const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         if (mutation.type === 'attributes') {
-            const oldTicker = viewContentComp.getAttribute('ticker');
 
-            switch (mutation.attributeName) {
-            
-                case 'view':
-            
-                    if (oldTicker) {
-                        const viewSelectCompValue = viewSelectComp.getAttribute('view');
-                        viewContentComp.setAttribute('view', viewSelectCompValue);
-                    };
-                    break;
-            
-                case 'ticker':
-            
-                    const newTicker = tickerSearchComp.getAttribute('ticker');
-                    viewContentComp.setAttribute('ticker', newTicker);   
-                    break;
+            const oldView = viewContentComp.getAttribute('view');
+            const oldTicker = viewContentComp.getAttribute('ticker');
+            const newView = viewSelectComp.getAttribute('view');
+            const newTicker = tickerSearchComp.getAttribute('ticker');
+
+            if (oldTicker || mutation.attributeName === 'ticker') {
+                
+                if (newView !== oldView) viewContentComp.setAttribute('view', newView);
+                if (newTicker !== oldTicker) viewContentComp.setAttribute('ticker', newTicker);
             };
         };
     });
